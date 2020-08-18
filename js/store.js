@@ -58,6 +58,7 @@
 		var todos = this._cache.todos;
 
 		//END
+
 		callback.call(this, todos.filter(function (todo) {
 			for (var q in query) {
 				if (query[q] !== todo[q]) {
@@ -75,7 +76,14 @@
 	 */
 	Store.prototype.findAll = function (callback) {
 		callback = callback || function () {};
-		callback.call(this, JSON.parse(localStorage[this._dbName]).todos);
+
+		//Refator-START
+		// get todos from cache
+
+		//callback.call(this, JSON.parse(localStorage[this._dbName]).todos);
+
+		callback.call(this, this._cache.todos);
+		//END
 	};
 
 	/**
