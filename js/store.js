@@ -23,7 +23,13 @@
 			localStorage[name] = JSON.stringify(data);
 		}
 
-		callback.call(this, JSON.parse(localStorage[name]));
+		//Refator-START
+		// cache property for faster memory access
+		//callback.call(this, JSON.parse(localStorage[name])); -prev line of code
+		this._cache = JSON.parse(localStorage[name]);
+		callback.call(this, this._cache)
+		//END
+		
 	}
 
 	/**
