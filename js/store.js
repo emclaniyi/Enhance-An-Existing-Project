@@ -95,18 +95,28 @@
 	 * @param {number} id An optional param to enter an ID of an item to update
 	 */
 	Store.prototype.save = function (updateData, callback, id) {
-		var data = JSON.parse(localStorage[this._dbName]);
+		//Refator-START
+		// fetch from cache
+		//var data = JSON.parse(localStorage[this._dbName]);
+		var data = this._cache;
+		//END
 		var todos = data.todos;
 
 		callback = callback || function () {};
+		//Refator-START
+		// generate an id only when needed - commentED out for loop
 
 		// Generate an ID
-	    var newId = ""; 
-	    var charset = "0123456789";
+	    // var newId = ""; 
+	    // var charset = "0123456789";
 
-        for (var i = 0; i < 6; i++) {
-     		newId += charset.charAt(Math.floor(Math.random() * charset.length));
-		}
+        // for (var i = 0; i < 6; i++) {
+     	// 	newId += charset.charAt(Math.floor(Math.random() * charset.length));
+		// }
+
+		//END
+
+
 
 		// If an ID was actually given, find the item and update each property
 		if (id) {
