@@ -50,8 +50,14 @@
 			return;
 		}
 
-		var todos = JSON.parse(localStorage[this._dbName]).todos;
+		//Refator-START
+		// get todo from cache
 
+		//var todos = JSON.parse(localStorage[this._dbName]).todos;
+
+		var todos = this._cache.todos;
+
+		//END
 		callback.call(this, todos.filter(function (todo) {
 			for (var q in query) {
 				if (query[q] !== todo[q]) {
