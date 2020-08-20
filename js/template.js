@@ -7,7 +7,7 @@
 		'<': '&lt;',
 		'>': '&gt;',
 		'"': '&quot;',
-		'\'': '&#x27;',
+		"'": '&#x27;',
 		'`': '&#x60;'
 	};
 
@@ -30,14 +30,14 @@
 	 * @constructor
 	 */
 	function Template() {
-		this.defaultTemplate
-		=	'<li data-id="{{id}}" class="{{completed}}">'
-		+		'<div class="view">'
-		+			'<input class="toggle" type="checkbox" {{checked}}>'
-		+			'<label>{{title}}</label>'
-		+			'<button class="destroy"></button>'
-		+		'</div>'
-		+	'</li>';
+		this.defaultTemplate =
+			'<li data-id="{{id}}" class="{{completed}}">' +
+					'<div class="view">' +
+						'<input class="toggle" type="checkbox" {{checked}}>' +
+						'<label>{{title}}</label>' +
+						'<button class="destroy"></button>' +
+					'</div>' +
+			'</li>';
 	}
 
 	/**
