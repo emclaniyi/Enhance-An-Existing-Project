@@ -128,19 +128,36 @@
 					break;
 				}
 			}
-
-			localStorage[this._dbName] = JSON.stringify(data);
+			//Refator-START
+			//Moved to after if/else instead of having duplicate code.
+			// It needs to run in both situations.
+			//localStorage[this._dbName] = JSON.stringify(data);
+			//END
 			callback.call(this, todos);
 		} else {
-
+			//Refator-START
     		// Assign an ID
+			// TODO: Can this be generated in a safer (unique) manner? Timestamp? Sequentially or auto increase somehow?
+			var newId = '';
+			var charset = '0123456789';
+			for (var i = 0; i < 6; i++) {
+			  newId += charset.charAt(Math.floor(Math.random() * charset.length));
+			}
+	  
+			//END
+			
 			updateData.id = parseInt(newId);
-    
-
 			todos.push(updateData);
-			localStorage[this._dbName] = JSON.stringify(data);
+
+			//Refator-START
+			//Moved to after if/else instead of having duplicate code.
+			// It needs to run in both situations.
+			//localStorage[this._dbName] = JSON.stringify(data);
+			//END
+			
 			callback.call(this, [updateData]);
 		}
+		localStorage[this._dbName] = JSON.stringify(data);
 	};
 
 	/**
