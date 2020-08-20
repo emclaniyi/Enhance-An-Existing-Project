@@ -195,7 +195,7 @@
 
 		//START-refactor
 		// splice as been moved above, code is redundant
-		
+
 		// for (var i = 0; i < todos.length; i++) {
 		// 	if (todos[i].id == todoId) {
 		// 		todos.splice(i, 1);
@@ -214,9 +214,17 @@
 	 * @param {function} callback The callback to fire after dropping the data
 	 */
 	Store.prototype.drop = function (callback) {
-		var data = {todos: []};
-		localStorage[this._dbName] = JSON.stringify(data);
-		callback.call(this, data.todos);
+		//START- refactor
+		//replce local storage with cache
+		//var data = {todos: []};
+		//localStorage[this._dbName] = JSON.stringify(data);
+		//callback.call(this, data.todos);
+
+		this._cache = {todos: [] };
+		localStorage[this._dbName] = JSON.stringify(this._cache);
+		callback.call(this, this._cache.todos);
+
+		//END
 	};
 
 	// Export to window
