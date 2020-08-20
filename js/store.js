@@ -167,21 +167,42 @@
 	 * @param {function} callback The callback to fire after saving
 	 */
 	Store.prototype.remove = function (id, callback) {
-		var data = JSON.parse(localStorage[this._dbName]);
+		//START-refactor
+		//fetch data from cache 
+		//var data = JSON.parse(localStorage[this._dbName]);
+		var data = this._cache;
+		//END
+
 		var todos = data.todos;
-		var todoId;
+		//START-refactor
+		// redundant variable declaration
+		
+		//var todoId;
+
+		//END
 		
 		for (var i = 0; i < todos.length; i++) {
 			if (todos[i].id == id) {
-				todoId = todos[i].id;
-			}
-		}
+				//START-refactor
+				// redundant variable declaration
 
-		for (var i = 0; i < todos.length; i++) {
-			if (todos[i].id == todoId) {
+				//todoId = todos[i].id;
+
+				//END
 				todos.splice(i, 1);
 			}
 		}
+
+		//START-refactor
+		// splice as been moved above, code is redundant
+		
+		// for (var i = 0; i < todos.length; i++) {
+		// 	if (todos[i].id == todoId) {
+		// 		todos.splice(i, 1);
+		// 	}
+		// }
+
+		//END
 
 		localStorage[this._dbName] = JSON.stringify(data);
 		callback.call(this, todos);
