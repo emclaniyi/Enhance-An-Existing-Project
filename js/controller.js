@@ -124,7 +124,7 @@
 
 		while (title[0] === " ") {
 			title = title.slice(1);
-		}
+		}//use title.trim
 
 		while (title[title.length-1] === " ") {
 			title = title.slice(0, -1);

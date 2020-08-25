@@ -1,5 +1,5 @@
 /*jshint eqeqeq:false */
-(function (window) {
+(function (window) { //comment out line 2 for the documentation in every file
 	'use strict';
 
 	/**
@@ -144,7 +144,7 @@
 			  newId += charset.charAt(Math.floor(Math.random() * charset.length));
 			}
 	  
-			//END
+			//END //edit use date.now
 			
 			updateData.id = parseInt(newId);
 			todos.push(updateData);
