@@ -138,13 +138,17 @@
 			//Refator-START
     		// Assign an ID
 			// TODO: Can this be generated in a safer (unique) manner? Timestamp? Sequentially or auto increase somehow?
-			var newId = '';
-			var charset = '0123456789';
-			for (var i = 0; i < 6; i++) {
-			  newId += charset.charAt(Math.floor(Math.random() * charset.length));
-			}
+			
+			// changes using Date()
+			// var newId = '';
+			// var charset = '0123456789';
+			// for (var i = 0; i < 6; i++) {
+			//   newId += charset.charAt(Math.floor(Math.random() * charset.length));
+			// }
+
+			var newId = new Date().now();
 	  
-			//END //edit use date.now
+			//END //edit use date.now--->>Done
 			
 			updateData.id = parseInt(newId);
 			todos.push(updateData);
