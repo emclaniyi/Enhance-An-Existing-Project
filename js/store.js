@@ -116,6 +116,7 @@
 
 		//END
 
+		var newId = Date.now();
 
 
 		// If an ID was actually given, find the item and update each property
@@ -146,7 +147,6 @@
 			//   newId += charset.charAt(Math.floor(Math.random() * charset.length));
 			// }
 
-			var newId = new Date().now();
 	  
 			//END //edit use date.now--->>Done
 			
